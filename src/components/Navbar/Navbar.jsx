@@ -36,7 +36,7 @@ const Navbar = () => {
           <NavLinks />
         </ul>
         <div className="md:block hidden">
-          <DonationBtn />
+        <Link to="/donation"><DonationBtn /></Link>
         </div>
         {/* mobile version */}
         <ul
@@ -52,7 +52,7 @@ const Navbar = () => {
 
           <NavLinks toggleOpen={toggleOpen}/>
           <div className="py-5">
-            <DonationBtn />
+          <Link to="/donation"><DonationBtn /></Link>
           </div>
         </ul>
       </div>

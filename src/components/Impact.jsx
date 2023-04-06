@@ -2,7 +2,7 @@ import React from "react";
 
 const Impact = () => {
   return (
-    <div className="bg-white rounded-lg m-6">
+    <div className="bg-stone-100 rounded-lg m-6">
       <h1 className="font-bold text-xl p-5">Our Impact</h1>
       <div className="flex md:flex-nowrap flex-wrap justify-between items-center gap-4 p-6">
         <div className="p-3 flex flex-col justify-center items-center h-60">

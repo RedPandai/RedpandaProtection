@@ -4,10 +4,10 @@ import LearnMoreBtn from "./LearnMoreBtn";
 
 const KeyFacts = () => {
   return (
-    <div className="bg-white m-6 rounded-lg">
+    <div className="bg-stone-100 m-6 rounded-lg">
       <div className="flex items-center gap-6">
         <h1 className="font-bold p-5 text-xl">Key Facts About Red Panda</h1>
-        <LearnMoreBtn/>
+        <LearnMoreBtn />
       </div>
 
       <div className="flex lg:flex-nowrap flex-wrap gap-6 p-5">

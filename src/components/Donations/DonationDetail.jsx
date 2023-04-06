@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import adoptions from "../adoptionLinks";
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  usePayPalScriptReducer,
-} from "@paypal/react-paypal-js";
+import { DonationModal } from "./DonationModal";
 
-const DonationDetail = () => {
+const DonationDetail = ({ handlePanda }) => {
   const { id } = useParams();
-  const currency = "GBP";
-  const style = { layout: "vertical" };
   const [price, setPrice] = useState("");
-  const [name, setName] = useState("");
-  const [checked, setChecked] = useState(false);
   const [open, setOpen] = useState(false);
   const panda = adoptions.filter((adoption) => adoption.id == id)[0];
   const donateOptions = [
@@ -24,66 +16,16 @@ const DonationDetail = () => {
     { amount: 10, name: "10-option" },
     { amount: 5, name: "5-option" },
   ];
+  useEffect(() => {
+    handlePanda(panda.name);
+  }, []);
 
   const handleChange = (e) => {
     setPrice(e.target.value);
   };
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
 
-  const createOrder = async (data) => {
-    router.push(`/orders/${res.data._id}`);
-  };
-
-  const ButtonWrapper = ({ currency, showSpinner }) => {
-    // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
-    // This is the main reason to wrap the PayPalButtons in a new component
-    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-
-    useEffect(() => {
-      dispatch({
-        type: "resetOptions",
-        value: {
-          ...options,
-          currency: currency,
-        },
-      });
-    }, [currency, showSpinner]);
-
-    return (
-      <>
-        {showSpinner && isPending && <div className="spinner" />}
-        <PayPalButtons
-          style={style}
-          disabled={false}
-          forceReRender={[price, currency, style]}
-          fundingSource={undefined}
-          createOrder={(data, actions) => {
-            return actions.order
-              .create({
-                purchase_units: [
-                  {
-                    amount: {
-                      currency_code: currency,
-                      value: price,
-                    },
-                  },
-                ],
-              })
-              .then((orderId) => {
-                // Your code here after create the order
-                return orderId;
-              });
-          }}
-          onApprove={function (data, actions) {
-            return actions.order.capture().then(function () {
-              // Your code here after capture the order
-            });
-          }}
-        />
-      </>
-    );
+  const handleModal = () => {
+    setOpen(false);
   };
 
   return (
@@ -138,7 +80,7 @@ const DonationDetail = () => {
           />
           <span>GBP</span>
         </div>
-        <div className="py-4 justify-self-start grid w-full">
+        {/* <div className="py-4 justify-self-start grid w-full">
           <div>
             <input
               type="checkbox"
@@ -150,7 +92,6 @@ const DonationDetail = () => {
               Dedicate this donation
             </label>
           </div>
-
           {checked && (
             <div>
               <input
@@ -165,28 +106,27 @@ const DonationDetail = () => {
               </div>
             </div>
           )}
-        </div>
-        {!open ? (
+        </div> */}
+
+        <div className="">
           <button
             className="bg-red-600 w-full text-white font-semibold p-4 rounded-lg hover:bg-red-800 disabled:bg-slate-300"
             disabled={!price}
-            onClick={() => setOpen(!open)}
+            onClick={() => setOpen(true)}
           >
             Donate Now
           </button>
-        ) : (
-          <PayPalScriptProvider
-            options={{
-              "client-id":
-                "ATFNpQ-XyKz3su-Ns72K101JhgqFfOia57TG5SrHKTbEWmFc_nh7NBUoX0mWBrepUvRCl2qqY7r5hVUN",
-              components: "buttons",
-              currency: "GBP",
-            }}
-          >
-            <ButtonWrapper currency={currency} showSpinner={false} />
-          </PayPalScriptProvider>
-        )}
+        </div>
       </section>
+      {open && (
+        <DonationModal
+          price={price}
+          handleModal={handleModal}
+          id={id}
+          panda={panda}
+          open={open}
+        />
+      )}
     </div>
   );
 };

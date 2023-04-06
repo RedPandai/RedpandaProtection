@@ -11,14 +11,22 @@ module.exports = {
       gridTemplateRows: {
         layout: "auto 1fr auto",
       },
-      animation: { wave: "wave 10s linear infinite" },
+      animation: {
+        loader: "loader 2s linear infinite",
+        slidein: "slidein 0.7s ease-out",
+      },
       keyframes: {
-        wave: {
+        loader: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
+        slidein: {
           "0%": {
-            transform: "translateX(0)",
+            transform: "translateY(0%)",
           },
           "100%": {
-            transform: "translateX(-100px)",
+            transform: "translateY(100%)",
           },
         },
       },

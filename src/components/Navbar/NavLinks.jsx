@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { links } from "./myLinks";
 import { Link } from "react-router-dom";
 
-const NavLinks = ({toggleOpen}) => {
+const NavLinks = ({ toggleOpen }) => {
   const [heading, setHeading] = useState("");
 
   return (
     <>
       {links.map((link) => (
         <div key={link.name}>
-          <div className="px-3 text-left md:cursor-pointer group">
+          <div className="px-3 text-left md:cursor-pointer group z-10">
             <h1
               className="py-7 flex justify-between items-center md:pr-0 pr-5 group font-semibold hover:text-green-600"
               onClick={() => {
@@ -58,8 +58,15 @@ const NavLinks = ({toggleOpen}) => {
             {link.sublinks.map((slink) => (
               <div key={slink.name}>
                 <div>
-                  <Link to={slink.link} className="hover:text-green-700 font-semibold" onClick={toggleOpen}>
-                  <h1 className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-between items-center hover:text-green-700">{slink.name}</h1></Link>
+                  <Link
+                    to={slink.link}
+                    className="hover:text-green-700 font-semibold"
+                    onClick={toggleOpen}
+                  >
+                    <h1 className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-between items-center hover:text-green-700">
+                      {slink.name}
+                    </h1>
+                  </Link>
                 </div>
               </div>
             ))}

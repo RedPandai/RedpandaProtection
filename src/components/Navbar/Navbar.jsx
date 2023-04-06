@@ -6,23 +6,23 @@ import logo from "/Logo.jpg";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const toggleOpen = ()=>{
-    setOpen(!open)
-  } 
+  const toggleOpen = () => {
+    setOpen(!open);
+  };
 
   return (
-    <nav className="bg-white yz-20">
+    <nav className="bg-white z-20">
       <div className="flex gap-8 items-center justify-between mx-auto">
         <div className="z-10 md:w-auto w-full flex justify-between items-center">
-        <Link to="/" className="flex flex-col items-center" >
-          <img src={logo} alt="logo" className="h-14 md:cursor-pointer" />
-          <p className="leading-4 font-black text-center line-3 px-4">
-            Red Panda Protection
-          </p>
-        </Link>
-        <div className="text-3xl md:hidden mx-3" onClick={toggleOpen}>
-          <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
-        </div>
+          <Link to="/" className="flex flex-col items-center">
+            <img src={logo} alt="logo" className="h-14 md:cursor-pointer" />
+            <p className="leading-4 font-black text-center line-3 px-4">
+              Red Panda Protection
+            </p>
+          </Link>
+          <div className="text-3xl md:hidden mx-3" onClick={toggleOpen}>
+            <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
+          </div>
         </div>
         <ul className="md:flex hidden gap-8 items-center font-semibold m-3">
           <li>
@@ -36,7 +36,9 @@ const Navbar = () => {
           <NavLinks />
         </ul>
         <div className="md:block hidden">
-        <Link to="/donation"><DonationBtn /></Link>
+          <Link to="/donation">
+            <DonationBtn />
+          </Link>
         </div>
         {/* mobile version */}
         <ul
@@ -45,14 +47,20 @@ const Navbar = () => {
           }`}
         >
           <li>
-            <Link to="/" className="py-7 px-3 inline-block font-semibold hover:text-green-600" onClick={toggleOpen}>
+            <Link
+              to="/"
+              className="py-7 px-3 inline-block font-semibold hover:text-green-600"
+              onClick={toggleOpen}
+            >
               Home
             </Link>
           </li>
 
-          <NavLinks toggleOpen={toggleOpen}/>
+          <NavLinks toggleOpen={toggleOpen} />
           <div className="py-5">
-          <Link to="/donation"><DonationBtn /></Link>
+            <Link to="/donation">
+              <DonationBtn />
+            </Link>
           </div>
         </ul>
       </div>

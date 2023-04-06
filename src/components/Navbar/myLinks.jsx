@@ -1,6 +1,6 @@
 export const links = [
   {
-    name: "Get Involved",
+    name: "Involved",
     submenu: true,
     sublinks: [
       {
@@ -40,11 +40,11 @@ export const links = [
     ],
   },
   {
-    name: "Contact Us",
+    name: "Contact",
     submenu: true,
     sublinks: [
       {
-        name: "About Us",
+        name: "About",
         link: "/contact",
       },
     ],

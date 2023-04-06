@@ -6,25 +6,25 @@ export const Meetteam = () => {
       name: "Bear Xiong",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum dolore tempora dolorum commodi nobis et, perferendis animi modi reiciendis veritatis.",
       position: "Founder",
-      photo: "/images/kitty1.jpg",
+      photo: "/images/kitty1(small).jpg",
     },
     {
       name: "Cat Mao",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum dolore tempora dolorum commodi nobis et, perferendis animi modi reiciendis veritatis.",
       position: "Manager",
-      photo: "/images/cat.jpg",
+      photo: "/images/cat(small).jpg",
     },
     {
       name: "Rabbit Tu",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum dolore tempora dolorum commodi nobis et, perferendis animi modi reiciendis veritatis.",
       position: "Fundraiser",
-      photo: "/images/rabbit.jpg",
+      photo: "/images/rabbit(small).jpg",
     },
     {
       name: "Dog Gou",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum dolore tempora dolorum commodi nobis et, perferendis animi modi reiciendis veritatis.",
       position: "Officer",
-      photo: "/images/puppy.jpg",
+      photo: "/images/puppy(small).jpg",
     },
   ];
   return (

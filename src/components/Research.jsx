@@ -6,7 +6,7 @@ import LearnMoreBtn from "./LearnMoreBtn";
 const Research = () => {
   return (
     <div className="bg-white m-6 rounded-lg">
-      <div className='flex items-center gap-6'>
+      <div className="flex items-center gap-6">
         <h1 className="font-bold text-xl p-5">Research and Reports</h1>
         <LearnMoreBtn />
       </div>

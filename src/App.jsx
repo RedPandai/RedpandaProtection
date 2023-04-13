@@ -11,6 +11,7 @@ import { About } from "./components/pages/About";
 import { Success } from "./components/pages/Success";
 import Research from "./components/Research";
 import { Researchpage } from "./components/pages/Researchpage";
+import Education from "./components/pages/Education";
 
 function App() {
   const [panda, setPanda] = useState("");
@@ -26,6 +27,7 @@ function App() {
           <Route path="/getinvolved" element={<GetInvolvedPage />}></Route>
           <Route path="/getinvolved/events" element={<Events />}></Route>
           <Route path="/research" element={<Researchpage />}></Route>
+          <Route path="/research/education" element={<Education />}></Route>
           <Route path="/contact" element={<About />}></Route>
           <Route path="/donation" element={<Donation />}></Route>
           <Route

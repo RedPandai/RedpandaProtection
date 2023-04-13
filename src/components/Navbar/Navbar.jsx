@@ -1,19 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import DonationBtn from "./DonationBtn";
 import NavLinks from "./NavLinks";
 import logo from "/Logo.jpg";
 
 const Navbar = () => {
+  const headerRef = useRef(null);
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {
     setOpen(!open);
   };
 
+  //scroll nav
+  useEffect(() => {
+    let prevScrollPos = window.scrollY;
+
+    const handleScroll = () => {
+      console.log(window.scrollY);
+      const currentScrollPos = window.scrollY;
+      const headerElement = headerRef.current;
+      if (!headerElement) return;
+      if (prevScrollPos > currentScrollPos) {
+        headerElement.classList.add("translate-y-0");
+        //can use style.transform here as well
+      } else {
+        headerElement.classList.add("-translate-y-full");
+      }
+      prevScrollPos = currentScrollPos;
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  console.log(window.scrollY);
   return (
-    <nav className="bg-white z-20">
+    <nav
+      className="bg-white transform inset-0 transition-all sticky"
+      ref={headerRef}
+    >
       <div className="flex gap-8 items-center justify-between mx-auto">
-        <div className="z-10 md:w-auto w-full flex justify-between items-center">
+        <div className="md:w-auto w-full flex justify-between items-center">
           <Link to="/" className="flex flex-col items-center">
             <img src={logo} alt="logo" className="h-14 md:cursor-pointer" />
             <p className="leading-4 font-black text-center line-3 px-4">

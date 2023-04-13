@@ -35,7 +35,7 @@ export const links = [
       },
       {
         name: "Educational Resources",
-        link: "/research",
+        link: "/research/education",
       },
     ],
   },

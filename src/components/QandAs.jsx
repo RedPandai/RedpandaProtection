@@ -11,12 +11,14 @@ export const QandAs = () => {
     {
       id: "q2",
       label: "Can I follow the infomration of the red panda I adopted?",
-      content: "Yes, but as they are in the wild, the news may update slowly. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum labore sapiente molestiae, voluptatibus voluptatem exercitationem voluptas. Mollitia eius ullam nobis.",
+      content:
+        "Yes, but as they are in the wild, the news may update slowly. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum labore sapiente molestiae, voluptatibus voluptatem exercitationem voluptas. Mollitia eius ullam nobis.",
     },
     {
       id: "q3",
       label: "Can I cancel my monthly donation?",
-      content: "Yes, you can cancel your subscribtion anytime you want. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum labore sapiente molestiae, voluptatibus voluptatem exercitationem voluptas. Mollitia eius ullam nobis.",
+      content:
+        "Yes, you can cancel your subscribtion anytime you want. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum labore sapiente molestiae, voluptatibus voluptatem exercitationem voluptas. Mollitia eius ullam nobis.",
     },
   ];
   const [expandedIndex, setExpandedIndex] = useState(-1);
@@ -31,13 +33,23 @@ export const QandAs = () => {
       <div className="font-semibold pt-2">{question.content}</div>
     );
     const icon = (
-      <span className="self-end transition-all pl-2 hover:cursor-pointer">
-        {isExpanded ? <ion-icon name="chevron-up-outline"></ion-icon> : <ion-icon name="chevron-down-outline"></ion-icon>}
+      <span className="self-end transition-all pl-2">
+        {isExpanded ? (
+          <ion-icon name="chevron-up-outline"></ion-icon>
+        ) : (
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        )}
       </span>
     );
     return (
-      <div className="bg-white p-6 border-2" key={question.id}>
-        <div className="flex items-center justify-between" onClick={() => handleClick(index)}>
+      <div
+        className="bg-white p-6 border-2 hover:cursor-pointer"
+        key={question.id}
+      >
+        <div
+          className="flex items-center justify-between"
+          onClick={() => handleClick(index)}
+        >
           <h4 className="font-bold text-lg">{question.label}</h4>
           {icon}
         </div>
@@ -46,9 +58,5 @@ export const QandAs = () => {
     );
   });
 
-  return (
-    <div className="mb-2">
-        {renderedList}
-    </div>
-  );
+  return <div className="mb-2">{renderedList}</div>;
 };

@@ -25,3 +25,7 @@ input:focus,
 textarea:focus {
   background-color: bisque;
 }
+
+ion-icon {
+  color: rgb(255, 84, 16);
+}

@@ -9,9 +9,9 @@ const NavLinks = ({ toggleOpen }) => {
     <>
       {links.map((link) => (
         <div key={link.name}>
-          <div className="px-3 text-left md:cursor-pointer group z-10">
+          <div className="px-3 text-left md:cursor-pointer group z-50 cursor-pointer">
             <h1
-              className="py-7 flex justify-between items-center md:pr-0 pr-5 group font-semibold hover:text-green-600"
+              className="py-7 flex justify-between items-center md:pr-0 pr-5 group font-semibold hover:text-orange-600"
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
               }}
@@ -33,14 +33,14 @@ const NavLinks = ({ toggleOpen }) => {
               <div>
                 <div className="absolute top-20 hidden group-hover:md:block hover:md:block">
                   <div className="py-4">
-                    <div className="w-4 h-4 left-3 absolute mt-2 bg-white rotate-45"></div>
+                    <div className="w-4 h-4 left-3 absolute mt-2 bg-neutral-700 rotate-45"></div>
                   </div>
-                  <div className="bg-white p-3 grid gap-10 mt-3">
+                  <div className="bg-neutral-700 p-3 grid gap-10 mt-3">
                     {link.sublinks.map((sublink) => (
                       <div key={sublink.name}>
                         <Link
                           to={sublink.link}
-                          className="hover:text-green-700 font-semibold"
+                          className="hover:text-orange-700 font-semibold"
                           onClick={toggleOpen}
                         >
                           {sublink.name}
@@ -60,10 +60,10 @@ const NavLinks = ({ toggleOpen }) => {
                 <div>
                   <Link
                     to={slink.link}
-                    className="hover:text-green-700 font-semibold"
+                    className="hover:text-orange-700 font-semibold"
                     onClick={toggleOpen}
                   >
-                    <h1 className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-between items-center hover:text-green-700">
+                    <h1 className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex justify-between items-center hover:text-orange-700">
                       {slink.name}
                     </h1>
                   </Link>

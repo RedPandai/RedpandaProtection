@@ -9,7 +9,6 @@ import DonationDetail from "./components/Donations/DonationDetail";
 import { Events } from "./components/pages/Events";
 import { About } from "./components/pages/About";
 import { Success } from "./components/pages/Success";
-import Research from "./components/Research";
 import { Researchpage } from "./components/pages/Researchpage";
 import Education from "./components/pages/Education";
 
@@ -19,9 +18,9 @@ function App() {
     setPanda(pandaName);
   };
   return (
-    <div className="h-screen bg-Hero bg-cover md:bg-top bg-center overflow-auto min-h-screen w-full flex flex-col">
+    <div className="flex flex-col h-screen bg-Hero bg-cover md:bg-top bg-center w-full">
       <Navbar />
-      <main className="flex-1 flex">
+      <main className="flex-1 flex pt-32">
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/getinvolved" element={<GetInvolvedPage />}></Route>

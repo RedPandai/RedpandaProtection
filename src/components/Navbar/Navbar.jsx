@@ -6,6 +6,7 @@ import logo from "/Logo.jpg";
 
 const Navbar = () => {
   const headerRef = useRef(null);
+  const prevScrollPos = useRef(0);
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {
     setOpen(!open);
@@ -13,31 +14,45 @@ const Navbar = () => {
 
   //scroll nav
   useEffect(() => {
-    let prevScrollPos = window.scrollY;
-
+    //debug：pageYOffset not working
+    //window ref is not working
+    //set usestate scrollY is not working
+    //body css setting not working
     const handleScroll = () => {
-      console.log(window.scrollY);
       const currentScrollPos = window.scrollY;
       const headerElement = headerRef.current;
-      if (!headerElement) return;
-      if (prevScrollPos > currentScrollPos) {
-        headerElement.classList.add("translate-y-0");
-        //can use style.transform here as well
-      } else {
-        headerElement.classList.add("-translate-y-full");
+      if (!headerElement) {
+        return;
       }
-      prevScrollPos = currentScrollPos;
+      if (prevScrollPos.current > currentScrollPos) {
+        headerElement.style.transform = "translateY(0)";
+        //can use style.transform here as well
+        //classList.add not working with tailwind
+      } else {
+        headerElement.style.transform = "translateY(-130px)";
+      }
+      prevScrollPos.current = currentScrollPos;
     };
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  console.log(window.scrollY);
+
+  //hide the scroll bar when the mobile nav is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [open]);
+
   return (
     <nav
-      className="bg-white transform inset-0 transition-all sticky"
+      className={`bg-neutral-700 text-white duration-500 transition-all z-50 fixed w-full p-2`}
       ref={headerRef}
     >
       <div className="flex gap-8 items-center justify-between mx-auto">
@@ -48,7 +63,10 @@ const Navbar = () => {
               Red Panda Protection
             </p>
           </Link>
-          <div className="text-3xl md:hidden mx-3" onClick={toggleOpen}>
+          <div
+            className="text-3xl md:hidden mx-3 z-50 cursor-pointer"
+            onClick={toggleOpen}
+          >
             <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
           </div>
         </div>
@@ -56,7 +74,7 @@ const Navbar = () => {
           <li>
             <Link
               to="/"
-              className="inline-block py-7 px-3 hover:text-green-600"
+              className="inline-block py-7 px-3 hover:text-orange-700"
             >
               Home
             </Link>
@@ -70,14 +88,14 @@ const Navbar = () => {
         </div>
         {/* mobile version */}
         <ul
-          className={`md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4 duration-500 ${
+          className={`md:hidden bg-neutral-700 fixed h-screen w-full overflow-y-auto top-0 bottom-0 py-24 pl-4 duration-500 ${
             open ? "left-0" : "left-[-100%]"
           }`}
         >
           <li>
             <Link
               to="/"
-              className="py-7 px-3 inline-block font-semibold hover:text-green-600"
+              className="py-7 px-3 inline-block font-semibold hover:text-orange-700 cursor-pointer"
               onClick={toggleOpen}
             >
               Home
@@ -87,7 +105,7 @@ const Navbar = () => {
           <NavLinks toggleOpen={toggleOpen} />
           <div className="py-5">
             <Link to="/donation">
-              <DonationBtn />
+              <DonationBtn toggleOpen={toggleOpen} />
             </Link>
           </div>
         </ul>

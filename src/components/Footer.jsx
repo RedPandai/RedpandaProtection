@@ -31,9 +31,17 @@ const Footer = () => {
 
       <div className="m-6">
         <label className="font-bold my-2">Sign Up</label>
-        <p className="text-sm my-2">Become a Member to Track work to Protect the Red Pandas</p>
-        <input className='border border-gray-300 p-3 m-2 rounded-xl hover:bg-yellow-200 outline-none drop-shadow-md' type="text" placeholder="Email Address" />
-        <button className="bg-redPanda text-white p-3 rounded-xl m-2 drop-shadow-md hover:bg-green-700">Sign up</button>
+        <p className="text-sm my-2">
+          Become a Member to Track work to Protect the Red Pandas
+        </p>
+        <input
+          className="border border-gray-300 p-3 m-2 rounded-xl hover:bg-yellow-200 outline-none drop-shadow-md"
+          type="text"
+          placeholder="Email Address"
+        />
+        <button className="bg-redPanda text-white p-3 rounded-xl m-2 drop-shadow-md hover:bg-red-900">
+          Sign up
+        </button>
       </div>
 
       <div className="flex flex-col mx-6">

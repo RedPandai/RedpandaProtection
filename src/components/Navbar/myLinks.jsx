@@ -40,6 +40,16 @@ export const links = [
     ],
   },
   {
+    name: "Learning Resources",
+    submenu: true,
+    sublinks: [
+      {
+        name: "Learning",
+        link: "/learning",
+      },
+    ],
+  },
+  {
     name: "Contact",
     submenu: true,
     sublinks: [
